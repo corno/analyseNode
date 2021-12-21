@@ -1,0 +1,22 @@
+{
+    "bin": {
+        "analyseNode": "./dist/pub/esc/bin/analyseNode.js"
+    },
+    "dependencies": {
+        "ts-morph": "^13.0.2",
+        "typescript": "^4.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.2"
+    },
+    "name": "analysenode",
+    "scripts": {
+        "build": "rm -rf ./dist && tsc && npm run makeEscBinExecutable",
+        "makeEscBinExecutable": "find ./dist/*/esc/bin/ -type f -name \"*.js\" -exec chmod 777 {} +",
+        "pubMin": "npm run validatePublishReadiness && npm version minor && npm run copyPackage && cd ./dist/pub && git push && npm publish",
+        "pubPatch": "npm run validatePublishReadiness && npm version patch && npm run copyPackage && cd ./dist/pub && git push && npm publish",
+        "update2latest": "ncu -u --packageFile package.json && npm install && tsc",
+        "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
+    },
+    "version": "0.0.0"
+}
