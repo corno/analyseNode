@@ -1,4 +1,21 @@
 {
+    "author": "Corno",
+    "bugs": {
+        "url": "https://github.com/corno/analyseNode/issues"
+    },
+    "description": "this package creates a typesafe TypeScript AST. Instead of just 1 generic 'Node' type, there over a hundred specific types. This is useful if you want to want to code that is dependent on the type of node from the AST",
+    "homepage": "https://github.com/corno/analyseNode#readme",
+    "keywords": [
+        "TypeScript",
+        "AST",
+        "typesafe"
+    ],
+    "license": "ISC",
+    "main": ".",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/corno/analyseNode.git"
+    },
     "bin": {
         "analyseNode": "./dist/pub/esc/bin/analyseNode.js"
     },
@@ -13,8 +30,8 @@
     "scripts": {
         "build": "rm -rf ./dist && tsc && npm run makeEscBinExecutable",
         "makeEscBinExecutable": "find ./dist/*/esc/bin/ -type f -name \"*.js\" -exec chmod 777 {} +",
-        "pubMin": "npm run validatePublishReadiness && npm version minor && npm run copyPackage && cd ./dist/pub && git push && npm publish",
-        "pubPatch": "npm run validatePublishReadiness && npm version patch && npm run copyPackage && cd ./dist/pub && git push && npm publish",
+        "pubMin": "npm run validatePublishReadiness && npm version minor && git push && npm publish",
+        "pubPatch": "npm run validatePublishReadiness && npm version patch && git push && npm publish",
         "update2latest": "ncu -u --packageFile package.json && npm install && tsc",
         "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
     },
