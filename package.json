@@ -18,5 +18,5 @@
         "update2latest": "ncu -u --packageFile package.json && npm install && tsc",
         "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
     },
-    "version": "0.0.0"
+    "version": "0.0.1"
 }
